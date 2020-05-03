@@ -19,7 +19,26 @@ docker run --rm \
 -e SOURCE=Jenkins \
 -e DEPLOYMENT_NAME=k8s-deploy-staging \
 -e DEPLOYMENT_VERSION=1.2.0 \
--e TAG_RULE="[{\"meTypes\":\"SERVICE\",\"tags\":[{\"context\":\"CONTEXTLESS\",\"key\":\"app\",\"value\":\"carts\"}]}]" \
--e CUSTOM_PROPERTIES="\"image\":\"carts\",\"tag\":\"0.1.1\"" \
+-e DEPLOYMENT_PROJECT=sockshop \
+-e DEPLOYMENT_REMEDIATION_ACTION=https://10.42.241.27/api/v2/job_templates/36/launch \
+-e CI_BACK_LINK=http://10.51.241.100/job/sockshop/job/orders/job/master/1/ \
+-e TAG_RULE="[{\"meTypes\":\"SERVICE\",\"tags\":[{\"context\":\"CONTEXTLESS\",\"key\":\"app\",\"value\":\"carts\"},{\"context\":\"CONTEXTLESS\",\"key\":\"env\",\"value\":\"dev\"}]}]" \
+-e CUSTOM_PROPERTIES="\"BuildNumber\":\"1\",\"GitCommit\":\"6c2bda106a0e15880c0a8a2755f2c112ac2b3698\"" \
+dynatraceacm/push-event:0.1.0
+```
+
+### Configuration change  Event
+
+```bash
+docker run --rm \
+-e DYNATRACE_BASE_URL={your-environment-url} \
+-e DYNATRACE_API_TOKEN={your-api-token} \
+-e EVENT_TYPE=CUSTOM_CONFIGURATION \
+-e SOURCE="Ansible Tower" \
+-e DESCRIPTION="promotion rate set to 20 %" \
+-e CONFIGURATION="promotion rate" \
+-e ORIGINAL_CONFIGURATION="0%" \
+-e TAG_RULE="[{\"meTypes\":\"SERVICE\",\"tags\":[{\"context\":\"CONTEXTLESS\",\"key\":\"app\",\"value\":\"carts\"},{\"context\":\"CONTEXTLESS\",\"key\":\"env\",\"value\":\"dev\"}]}]" \
+-e CUSTOM_PROPERTIES="\"remediationAction\":\"https://10.42.241.27/api/v2/job_templates/36/launch\"" \
 dynatraceacm/push-event:0.1.0
 ```
