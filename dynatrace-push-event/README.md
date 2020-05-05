@@ -9,7 +9,7 @@ This container allows you to push the following event types to dynatrace:
 
 ## Example
 
-### Deployment Event
+### Deployment event
 
 ```bash
 docker run --rm \
@@ -27,7 +27,7 @@ docker run --rm \
 dynatraceacm/push-event:0.1.0
 ```
 
-### Configuration change  Event
+### Configuration change event
 
 ```bash
 docker run --rm \
@@ -40,5 +40,21 @@ docker run --rm \
 -e ORIGINAL_CONFIGURATION="0%" \
 -e TAG_RULE="[{\"meTypes\":\"SERVICE\",\"tags\":[{\"context\":\"CONTEXTLESS\",\"key\":\"app\",\"value\":\"carts\"},{\"context\":\"CONTEXTLESS\",\"key\":\"env\",\"value\":\"dev\"}]}]" \
 -e CUSTOM_PROPERTIES="\"remediationAction\":\"https://10.42.241.27/api/v2/job_templates/36/launch\"" \
+dynatraceacm/push-event:0.1.0
+```
+
+### Annotation Event for a Performance Test
+
+```bash
+docker run --rm \
+-e DYNATRACE_BASE_URL={your-environment-url} \
+-e DYNATRACE_API_TOKEN={your-api-token} \
+-e EVENT_TYPE="CUSTOM_ANNOTATION" \
+-e SOURCE="NeoLoad" \
+-e ANNOTATION_TYPE="Performance Test" \
+-e ANNOTATION_DESCRIPTION="Performance Test executed" \
+-e START="2020-05-03T15:00:00Z" \
+-e END="2020-05-03T15:10:00Z" \
+-e TAG_RULE="[{\"meTypes\":\"SERVICE\",\"tags\":[{\"context\":\"CONTEXTLESS\",\"key\":\"iis-app\",\"value\":\"Default Web Site:80\"},{\"context\":\"CONTEXTLESS\",\"key\":\"env\",\"value\":\"dev\"}]}]" \
 dynatraceacm/push-event:0.1.0
 ```
