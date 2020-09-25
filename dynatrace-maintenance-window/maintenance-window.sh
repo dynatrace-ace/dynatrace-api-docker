@@ -9,12 +9,13 @@
 # Required enviroment variables
 # - DYNATRACE_BASE_URL "https://abc123.live.dynatrace.com"
 # - DYNATRACE_API_TOKEN
-# - TAG_RULE
-# - NAME "Dummy Maintenance Window"
-# - TYPE [ PLANNED, UNPLANNED ]
-# - SUPPRESSION [ DETECT_PROBLEMS_AND_ALERT, DETECT_PROBLEMS_DONT_ALERT, DONT_DETECT_PROBLEMS ]
-# - SCOPE
-# - SCHEDULE
+# - METHOD [ GET, POST ]
+# - (if METHOD=POST) NAME "Dummy Maintenance Window"
+# - (if METHOD=POST) DESCRIPTION "Maintenance window description..."
+# - (if METHOD=POST) TYPE [ PLANNED, UNPLANNED ]
+# - (if METHOD=POST) SUPPRESSION [ DETECT_PROBLEMS_AND_ALERT, DETECT_PROBLEMS_DONT_ALERT, DONT_DETECT_PROBLEMS ]
+# - (if METHOD=POST) SCOPE
+# - (if METHOD=POST) SCHEDULE
 
 echo "----------------------------------------------------"
 echo "Running container"
