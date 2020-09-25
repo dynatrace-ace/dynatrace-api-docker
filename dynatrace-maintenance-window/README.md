@@ -1,7 +1,9 @@
 # Dynatrace Maintenance Window Docker
 
 # Build
+```
 docker build -t maintenance-window:0.1.0 .
+```
 
 # Usage
 
