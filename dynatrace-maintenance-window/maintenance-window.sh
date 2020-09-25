@@ -3,6 +3,7 @@
 # Dynatrace Maintenance Window
 #
 # This code supports the following API operations:
+# - GET
 # - POST
 #
 # Required enviroment variables
