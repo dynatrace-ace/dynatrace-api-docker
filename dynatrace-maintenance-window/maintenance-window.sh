@@ -38,7 +38,7 @@ if [[ "${DEBUG}" == "true" ]]; then
 ############################
 if [[ "${METHOD}" == "GET" ]]; then
   ARGS=(
-    --request GET
+    --request "${METHOD}"
     --silent
     --url "${DYNATRACE_API_URL}"
     --header "Content-type: application/json"
@@ -50,40 +50,45 @@ fi
 # POST LOGIC
 ############################
 
-if [[ "${METHOD}" == "POST" ]]; then
+if [[ "${METHOD}" == "POST" ]] || [[ "${METHOD}" == "PUT" ]]; then
   NAME=${NAME?'NAME variable missing.'}
   DESCRIPTION=${DESCRIPTION?'DESCRIPTION variable missing.'}
   TYPE=${TYPE?'TYPE variable missing. Must be one of [PLANNED, UNPLANNED]'}
   SUPPRESSION=${SUPPRESSION?'SUPPRESSION variable missing. Must be one of [ DETECT_PROBLEMS_AND_ALERT, DETECT_PROBLEMS_DONT_ALERT, DONT_DETECT_PROBLEMS ]'}
   SCOPE=${SCOPE?'SCOPE variable missing. Please provide a scope for this maintenance window.'}
   SCHEDULE=${SCHEDULE?'SCHEDULE variable missing.'}
+  
+  if [[ "${METHOD}" == "PUT" ]]; then
+    WINDOW_ID=${WINDOW_ID?'WINDOW_ID variable missing. You must provide a maintenance window ID.'}
+    DYNATRACE_API_URL+="/${WINDOW_ID}"
+  fi
 
-  # build up POST_BODY variable
-  POST_BODY="{\"name\":\"${NAME}\""
-  POST_BODY+=", \"description\":\"${DESCRIPTION}\""
-  POST_BODY+=", \"type\":\"${TYPE}\""
-  POST_BODY+=", \"suppression\":\"${SUPPRESSION}\""
-  POST_BODY+=", \"scope\": ${SCOPE}"
-  POST_BODY+=", \"schedule\": ${SCHEDULE}"
+  # build up BODY variable
+  BODY="{\"name\":\"${NAME}\""
+  BODY+=", \"description\":\"${DESCRIPTION}\""
+  BODY+=", \"type\":\"${TYPE}\""
+  BODY+=", \"suppression\":\"${SUPPRESSION}\""
+  BODY+=", \"scope\": ${SCOPE}"
+  BODY+=", \"schedule\": ${SCHEDULE}"
   # add the closing bracket
-  POST_BODY="${POST_BODY}}"
+  BODY="${BODY}}"
 
   ARGS=(
-    --request POST
+    --request "${METHOD}"
     --silent
     --url "${DYNATRACE_API_URL}"
     --header "Content-type: application/json"
     --header "Authorization: Api-Token ${DYNATRACE_API_TOKEN}"
-    --data "${POST_BODY}"
+    --data "${BODY}"
   )
 fi
 
 echo "----------------------------------------------------"
 echo "Calling Dynatrace Maintenance Window API"
-echo "DYNATRACE_BASE_URL = ${DYNATRACE_BASE_URL}"
+echo "DYNATRACE_API_URL = ${DYNATRACE_API_URL}"
 echo "METHOD = ${METHOD}"
-if [[ "${METHOD}" == "POST" ]]; then
-  echo "POST_BODY = $POST_BODY"
+if [[ "${METHOD}" == "POST" ]] || [[ "${METHOD}" == "PUT" ]]; then
+  echo "BODY = $BODY"
 fi
 echo "----------------------------------------------------"
 status=$(curl "${ARGS[@]}")

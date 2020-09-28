@@ -32,3 +32,23 @@ docker run --rm ^
 -e SCHEDULE=" { \"recurrenceType\": \"ONCE\", \"start\": \"2020-09-25 11:00\", \"end\": \"2020-09-25 11:15\", \"zoneId\": \"Australia/Brisbane\" } " ^
 maintenance-window:0.1.0
 ```
+
+## PUT Maintenance Window
+Use PUT to update an existing window or create a new one, if one doesn't already exist.
+
+Requires a new `WINDOW_ID` parameter.
+
+```
+docker run --rm ^
+-e DYNATRACE_BASE_URL=https://abc123.live.dynatrace.com ^
+-e DYNATRACE_API_TOKEN=*** ^
+-e METHOD=POST ^
+-e NAME="Dummy Maintenance Window" ^
+-e DESCRIPTION="description here..." ^
+-e TYPE="PLANNED" ^
+-e SUPPRESSION="DETECT_PROBLEMS_AND_ALERT" ^
+-e SCOPE=" { \"entities\": [ ], \"matches\": [{ \"type\": \"SERVICE\", \"tags\": [{ \"key\": \"customer-a\", \"context\": \"CONTEXTLESS\" }] }, { \"type\": \"APPLICATION\", \"tags\": [{ \"key\": \"customer-a\", \"context\": \"CONTEXTLESS\" }] }] } " ^
+-e SCHEDULE=" { \"recurrenceType\": \"ONCE\", \"start\": \"2020-09-25 11:00\", \"end\": \"2020-09-25 11:15\", \"zoneId\": \"Australia/Brisbane\" } " ^
+-e WINDOW_ID="a1234b5d-abcd-1234-abcd-def567abc123"
+maintenance-window:0.1.0
+```
