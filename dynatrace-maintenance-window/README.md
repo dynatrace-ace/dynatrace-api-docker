@@ -1,5 +1,10 @@
 # Dynatrace Maintenance Window Docker
 
+# Public Image
+```
+docker pull dynatraceacm/maintenance-window:0.1.0
+```
+
 # Build
 ```
 docker build -t maintenance-window:0.1.0 .
@@ -25,7 +30,7 @@ METHOD=GET
 
 Then execute with:
 ```
-docker run --rm --env-file=env.txt maintenance-window:0.1.0
+docker run --rm --env-file=env.txt dynatraceacm/maintenance-window:0.1.0
 ```
 
 ## POST New Maintenance Window
@@ -47,7 +52,7 @@ SCHEDULE={ "recurrenceType": "ONCE", "start": "2020-09-29 11:00", "end": "2020-0
 
 Then execute:
 ```
-docker run --rm --env-file=env.txt maintenance-window:0.1.0
+docker run --rm --env-file=env.txt dynatraceacm/maintenance-window:0.1.0
 ```
 
 ## PUT Maintenance Window
@@ -70,5 +75,5 @@ WINDOW_ID=12345678-1234-1234-1234-123456789012
 
 Then run, as usual, with:
 ```
-docker run --rm --env-file=env.txt maintenance-window:0.1.0
+docker run --rm --env-file=env.txt dynatraceacm/maintenance-window:0.1.0
 ```
