@@ -5,17 +5,19 @@
 # This code supports the following API operations:
 # - GET
 # - POST
+# - PUT
 #
 # Required enviroment variables
 # - DYNATRACE_BASE_URL "https://abc123.live.dynatrace.com"
 # - DYNATRACE_API_TOKEN
-# - METHOD [ GET, POST ]
-# - (if METHOD=POST) NAME "Dummy Maintenance Window"
-# - (if METHOD=POST) DESCRIPTION "Maintenance window description..."
-# - (if METHOD=POST) TYPE [ PLANNED, UNPLANNED ]
-# - (if METHOD=POST) SUPPRESSION [ DETECT_PROBLEMS_AND_ALERT, DETECT_PROBLEMS_DONT_ALERT, DONT_DETECT_PROBLEMS ]
-# - (if METHOD=POST) SCOPE
-# - (if METHOD=POST) SCHEDULE
+# - METHOD [ GET, POST, PUT ]
+# - (if METHOD=POST or PUT) NAME "Dummy Maintenance Window"
+# - (if METHOD=POST or PUT) DESCRIPTION "Maintenance window description..."
+# - (if METHOD=POST or PUT) TYPE [ PLANNED, UNPLANNED ]
+# - (if METHOD=POST or PUT) SUPPRESSION [ DETECT_PROBLEMS_AND_ALERT, DETECT_PROBLEMS_DONT_ALERT, DONT_DETECT_PROBLEMS ]
+# - (if METHOD=POST or PUT) SCOPE
+# - (if METHOD=POST or PUT) SCHEDULE
+# - (if METHOD=PUT) WINDOW_ID
 
 echo "----------------------------------------------------"
 echo "Running container"
@@ -24,7 +26,7 @@ echo "Running container"
 # Required parameters
 DYNATRACE_BASE_URL=${DYNATRACE_BASE_URL:?'DYNATRACE_BASE_URL variable missing.'}
 DYNATRACE_API_TOKEN=${DYNATRACE_API_TOKEN:?'DYNATRACE_API_TOKEN variable missing.'}
-METHOD=${METHOD:?'METHOD variable is missing. Must be one of [GET, POST]'}
+METHOD=${METHOD:?'METHOD variable is missing. Must be one of [GET, POST, PUT]'}
 
 # Calculated values
 DYNATRACE_API_URL="$DYNATRACE_BASE_URL/api/config/v1/maintenanceWindows"
