@@ -49,7 +49,7 @@ if [[ "${METHOD}" == "GET" ]]; then
 fi
 
 ############################
-# POST LOGIC
+# POST AND PUT LOGIC
 ############################
 
 if [[ "${METHOD}" == "POST" ]] || [[ "${METHOD}" == "PUT" ]]; then
