@@ -16,9 +16,11 @@ set DT_APITOKEN=***
 set DT_HTTPMETHOD=GET
 ```
 
-Then run the Go file:
+Then execute:
 
 ```
+bin/dt-maintenance-window.exe
+or
 go run app.go
 ```
 
@@ -33,8 +35,10 @@ set DT_SCOPE={ "entities": [], "matches": [{ "type": "SERVICE", "tags": [{ "key"
 set DT_SCHEDULE={ "recurrenceType": "ONCE", "start": "2020-09-29 11:00", "end": "2020-09-29 11:15", "zoneId": "Australia/Brisbane" }
 ```
 
-Then run the Go file:
+Then execute:
 ```
+bin/dt-maintenance-window.exe
+or
 go run app.go
 ```
 
@@ -44,9 +48,10 @@ The `DT_WINDOWID` environment variable is mandatory for the PUT command
 set DT_WINDOWID=12345678-1234-1234-1234-123456789012
 ```
 
-Then run the Go file:
-
+Then execute:
 ```
+bin/dt-maintenance-window.exe
+or
 go run app.go
 ```
 
