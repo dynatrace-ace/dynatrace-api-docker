@@ -60,11 +60,13 @@ go run app.go
 Build for linux:
 ```
 set GOOS=linux
+set GOOS=amd64
 go build
 ```
 
 Build for windows:
 ```
 set GOOS=windows
+set GOARCH=amd64
 go build
 ```
