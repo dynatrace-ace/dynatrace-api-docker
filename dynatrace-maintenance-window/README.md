@@ -1,12 +1,5 @@
 # Dynatrace Maintenance Window
 
-
-# Prerequisites
-
-```
-go get "github.com/kelseyhightower/envconfig"
-```
-
 # GET Usage
 
 Set your environment variables accordingly. For example:
