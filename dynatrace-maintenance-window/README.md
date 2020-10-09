@@ -15,13 +15,17 @@ set DT_BASEURL=https://abc123.live.dynatrace.com
 set DT_APITOKEN=***
 set DT_HTTPMETHOD=GET
 ```
+or
+```
+export DT_BASEURL=https://abc123.live.dynatrace.com
+export DT_BASEURL=https://abc123.live.dynatrace.com
+export DT_HTTPMETHOD=GET
+```
 
 Then execute:
 
 ```
-bin/dt-maintenance-window.exe
-or
-go run app.go
+bin/windows/dt-maintenance-window-amd64.exe
 ```
 
 # POST Usage
@@ -37,9 +41,7 @@ set DT_SCHEDULE={ "recurrenceType": "ONCE", "start": "2020-09-29 11:00", "end": 
 
 Then execute:
 ```
-bin/dt-maintenance-window.exe
-or
-go run app.go
+bin/windows/dt-maintenance-window-amd64.exe
 ```
 
 # PUT Usage
@@ -50,23 +52,9 @@ set DT_WINDOWID=12345678-1234-1234-1234-123456789012
 
 Then execute:
 ```
-bin/dt-maintenance-window.exe
-or
-go run app.go
+bin/windows/dt-maintenance-window-amd64.exe
 ```
 
 # Build Notes
 
-Build for linux:
-```
-set GOOS=linux
-set GOOS=amd64
-go build
-```
-
-Build for windows:
-```
-set GOOS=windows
-set GOARCH=amd64
-go build
-```
+See `build-notes.txt` which will build 32bit and 64bit for windows, linux and darwin (macOS).
