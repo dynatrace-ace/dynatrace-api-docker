@@ -63,4 +63,15 @@ bin/windows/dt-maintenance-window-amd64.exe
 
 # Build Notes
 
+```
+make build
+```
+Or selectively build for platforms:
+```
+make build_windows
+make build_linux
+make build_macos
+```
+
+Alternatively:
 See `build-notes.txt` which will build 32bit and 64bit for windows, linux and darwin (macOS).
