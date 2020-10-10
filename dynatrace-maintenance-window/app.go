@@ -88,7 +88,7 @@ func main() {
     
   // Check additional mandatory parameter for PUT
   // Exit if we're missing it
-  if (dtoptions.HTTPMethod == "PUT") {
+  if (dtoptions.HTTPMethod == "PUT" || dtoptions.HTTPMethod == "DELETE") {
     if (dtoptions.WindowID == "") {
       fmt.Println("NO DT_WINDOWID environment variable defined. Please provide a maintenance window ID in UUID format.")
       os.Exit(1)
@@ -128,8 +128,3 @@ func main() {
  
   fmt.Printf("Body: %s", body)
 }
-
-//TODO
-//func sendRequest(Request req) {
-
-//}

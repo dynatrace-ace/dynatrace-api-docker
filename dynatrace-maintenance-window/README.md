@@ -24,6 +24,9 @@ bin\windows\dt-maintenance-window-amd64.exe
 # POST Usage
 Set some additional environment variables:
 ```
+set DT_BASEURL=https://abc123.live.dynatrace.com
+set DT_APITOKEN=***
+set DT_HTTPMETHOD=POST
 set DT_NAME=Dummy Maintenance Window
 set DT_DESCRIPTION=description here
 set DT_TYPE=PLANNED
@@ -33,6 +36,9 @@ set DT_SCHEDULE={ "recurrenceType": "ONCE", "start": "2020-09-29 11:00", "end": 
 ```
 or
 ```
+export DT_BASEURL=https://abc123.live.dynatrace.com
+export DT_APITOKEN=***
+export DT_HTTPMETHOD=POST
 export DT_NAME=Dummy Maintenance Window
 export DT_DESCRIPTION=description here
 export DT_TYPE=PLANNED
@@ -47,12 +53,51 @@ bin\windows\dt-maintenance-window-amd64.exe
 ```
 
 # PUT Usage
-The `DT_WINDOWID` environment variable is mandatory for the PUT command
+The `DT_WINDOWID` environment variable is mandatory for the `PUT` command
 ```
+set DT_BASEURL=https://abc123.live.dynatrace.com
+set DT_APITOKEN=***
+set DT_HTTPMETHOD=PUT
+set DT_NAME=Dummy Maintenance Window
+set DT_DESCRIPTION=description here
+set DT_TYPE=PLANNED
+set DT_SUPPRESSION=DETECT_PROBLEMS_AND_ALERT
+set DT_SCOPE={ "entities": [], "matches": [{ "type": "SERVICE", "tags": [{ "key": "customer-a", "context": "CONTEXTLESS" }] }, { "type": "APPLICATION", "tags": [{ "key": "customer-a", "context": "CONTEXTLESS" }] }] }
+set DT_SCHEDULE={ "recurrenceType": "ONCE", "start": "2020-09-29 11:00", "end": "2020-09-29 11:15", "zoneId": "Australia/Brisbane" }
 set DT_WINDOWID=12345678-1234-1234-1234-123456789012
 ```
 or
 ```
+export DT_BASEURL=https://abc123.live.dynatrace.com
+export DT_APITOKEN=***
+export DT_HTTPMETHOD=PUT
+export DT_NAME=Dummy Maintenance Window
+export DT_DESCRIPTION=description here
+export DT_TYPE=PLANNED
+export DT_SUPPRESSION=DETECT_PROBLEMS_AND_ALERT
+export DT_SCOPE={ "entities": [], "matches": [{ "type": "SERVICE", "tags": [{ "key": "customer-a", "context": "CONTEXTLESS" }] }, { "type": "APPLICATION", "tags": [{ "key": "customer-a", "context": "CONTEXTLESS" }] }] }
+export DT_SCHEDULE={ "recurrenceType": "ONCE", "start": "2020-09-29 11:00", "end": "2020-09-29 11:15", "zoneId": "Australia/Brisbane" }
+export DT_WINDOWID=12345678-1234-1234-1234-123456789012
+```
+
+Then execute:
+```
+bin\windows\dt-maintenance-window-amd64.exe
+```
+
+# DELETE Usage
+The `DT_WINDOWID` environment variable is mandatory for the `DELETE` command
+```
+set DT_BASEURL=https://abc123.live.dynatrace.com
+set DT_APITOKEN=***
+set DT_HTTPMETHOD=DELETE
+set DT_WINDOWID=12345678-1234-1234-1234-123456789012
+```
+or
+```
+export DT_BASEURL=https://abc123.live.dynatrace.com
+export DT_APITOKEN=***
+export DT_HTTPMETHOD=DELETE
 export DT_WINDOWID=12345678-1234-1234-1234-123456789012
 ```
 
