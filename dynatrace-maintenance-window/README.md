@@ -18,7 +18,7 @@ export DT_HTTPMETHOD=GET
 Then execute:
 
 ```
-bin/windows/dt-maintenance-window-amd64.exe
+bin\windows\dt-maintenance-window-amd64.exe
 ```
 
 # POST Usage
@@ -43,7 +43,7 @@ export DT_SCHEDULE={ "recurrenceType": "ONCE", "start": "2020-09-29 11:00", "end
 
 Then execute:
 ```
-bin/windows/dt-maintenance-window-amd64.exe
+bin\windows\dt-maintenance-window-amd64.exe
 ```
 
 # PUT Usage
@@ -58,7 +58,7 @@ export DT_WINDOWID=12345678-1234-1234-1234-123456789012
 
 Then execute:
 ```
-bin/windows/dt-maintenance-window-amd64.exe
+bin\windows\dt-maintenance-window-amd64.exe
 ```
 
 # Build Notes
