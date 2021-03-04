@@ -12,8 +12,8 @@ import (
 
 // Server details
 type Server struct {
-	DtEnvURL string `envconfig:"DT_ENV_URL"`
-	APIToken string `envconfig:"DT_API_TOKEN"`
+	DtEnvURL   string `envconfig:"DT_ENV_URL"`
+	DtAPIToken string `envconfig:"DT_API_TOKEN"`
 }
 
 // ProviderConfiguration stores the Dynatrace API client
@@ -24,14 +24,14 @@ type ProviderConfiguration struct {
 
 func initiateClient() (*ProviderConfiguration, error) {
 
-	var dynatraceURL Server
+	var dynatraceConnection Server
 
-	err := envconfig.Process("DT_ENV_URL", &dynatraceURL)
+	err := envconfig.Process("DT_ENV_URL", &dynatraceConnection)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
 
-	parsedDTUrl, err := url.Parse(dynatraceURL.DtEnvURL)
+	parsedDTUrl, err := url.Parse(dynatraceConnection.DtEnvURL)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -41,7 +41,7 @@ func initiateClient() (*ProviderConfiguration, error) {
 		dynatraceEnvironmentV1.ContextAPIKeys,
 		map[string]dynatraceEnvironmentV1.APIKey{
 			"Api-Token": {
-				Key:    dynatraceURL.APIToken,
+				Key:    dynatraceConnection.DtAPIToken,
 				Prefix: "Api-Token",
 			},
 		},
