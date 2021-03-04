@@ -50,7 +50,6 @@ func buildEvent() dynatraceEnvironmentV1.EventCreation {
 			log.Fatal(err.Error())
 		}
 		startTimeEpoch := startTime.UnixNano() / int64(time.Millisecond)
-		fmt.Println(startTimeEpoch)
 		dtEvent.SetStart(startTimeEpoch)
 	}
 
